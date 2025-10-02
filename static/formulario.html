@@ -17,7 +17,7 @@
           box-shadow: 0 2px 10px rgba(0,0,0,0.2);
           width: 420px;
       }
-      .card-header h1 {
+      .card h1 {
           color: #1877f2;
           font-size: 40px;
           text-align: center;
@@ -33,13 +33,13 @@
 </head>
 <body>
   <div class="card">
+    <h1 class="text-center">facebook</h1>
     <div class="card-header text-center">
-      <h1>facebook</h1>
       <h4>Crea una cuenta</h4>
       <p>Es rápido y fácil.</p>
     </div>
     <div class="card-body">
-      <form onsubmit="redirigir(event)">
+      <form>
         <div class="row mb-3">
           <div class="col">
             <input type="text" id="nombre" class="form-control" placeholder="Nombre" required>
@@ -52,41 +52,8 @@
         <label class="form-label">Fecha de nacimiento</label>
         <div class="row mb-3">
           <div class="col">
-            <select id="dia" class="form-select">
-              <script>
-                for (let i=1; i<=31; i++) {
-                  document.write(`<option value="${i}">${i}</option>`);
-                }
-              </script>
-            </select>
+            <input type="date" id="dia">
           </div>
-          <div class="col">
-            <select id="mes" class="form-select">
-              <option value="ene">Ene</option>
-              <option value="feb">Feb</option>
-              <option value="mar">Mar</option>
-              <option value="abr">Abr</option>
-              <option value="may">May</option>
-              <option value="jun">Jun</option>
-              <option value="jul">Jul</option>
-              <option value="ago">Ago</option>
-              <option value="sep">Sep</option>
-              <option value="oct">Oct</option>
-              <option value="nov">Nov</option>
-              <option value="dic">Dic</option>
-            </select>
-          </div>
-          <div class="col">
-            <select id="anio" class="form-select">
-              <script>
-                let year = new Date().getFullYear();
-                for (let i=year; i>=1900; i--) {
-                  document.write(`<option value="${i}">${i}</option>`);
-                }
-              </script>
-            </select>
-          </div>
-        </div>
 
         <label class="form-label">Género</label>
         <div class="d-flex justify-content-between mb-3">
@@ -117,21 +84,6 @@
     </div>
   </div>
 
-  <script>
-    function redirigir(e) {
-      e.preventDefault();
-      let nombre = document.getElementById("nombre").value;
-      let apellido = document.getElementById("apellido").value;
-      let contacto = document.getElementById("contacto").value;
-      let contrasena = document.getElementById("contrasena").value;
-      let genero = document.querySelector('input[name="genero"]:checked').value;
-      let dia = document.getElementById("dia").value;
-      let mes = document.getElementById("mes").value;
-      let anio = document.getElementById("anio").value;
-      let fecha = `${dia}-${mes}-${anio}`;
 
-      window.location.href = `/registrar/${nombre}/${apellido}/${contacto}/${genero}/${fecha}/${contrasena}`;
-    }
-  </script>
 </body>
 </html>
