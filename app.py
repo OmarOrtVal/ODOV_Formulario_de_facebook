@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return '<a href="/static/formulario.html">Ir al Formulario</a>'
+    return app.send_static_file("formulario.html")
 
 @app.route('/registrar/<nombre>/<apellido>/<contacto>/<genero>/<fecha>/<contrasena>')
 def registrar(nombre, apellido, contacto, genero, fecha, contrasena):
@@ -27,5 +27,3 @@ def registrar(nombre, apellido, contacto, genero, fecha, contrasena):
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
